@@ -75,4 +75,21 @@ man git
 
 5. ##### 修改最近一次提交：git commit --amend（比如：先git commit，发现还有未提交文件，git add 忘提交文件，再次执行git commit --amend，会覆盖上次的commit，git log中只会记录最近这次的commit。注意修改已经push的commit会导致再次push冲突）
 
-6. 
+6. 取消保存到暂存区的文件：git reset HEAD file，此操作会将git add的文件还原回修改待添加的状态
+
+7. 放弃对文件的修改：git checkout -- file，此操作会将已经修改待添加的文件的修改删除，慎用
+
+8. 放弃对已经保存到暂存区的文件的修改：git reset --hard commitNo （commitNo指reset到哪个提交点，默认是HEAD所在提交点）
+
+9. git fetch：拉取远程仓库的分支信息和tag信息
+
+10. 打标签：分为：轻量级标签（只是个引用，指向某个提交点），含附注的标签（独立的一个标签对象）
+
+    ~~~
+    查看所有标签：git tag
+    新建轻量级标签 git tag v1.0
+    新建含附注标签 git tag -a v1.0 -m “coment”
+    ~~~
+
+    
+

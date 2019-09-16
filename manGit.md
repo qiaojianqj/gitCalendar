@@ -67,4 +67,6 @@ man git
 
 1. git add，添加修改到暂存区，再git commit -m “comment” 提交到本地仓库
 2. git commit -a -m “comment” 可以跳过git add，直接提交修改到本地仓库。
-3. 文件重命名：git mv
+3. 文件重命名：git mv old new
+4. 查看提交历史：git log
+5. 修改最近一次提交：git commit --amend（比如：先git commit，发现还有未提交文件，git add 忘提交文件，再次执行git commit --amend，会覆盖上次的commit，git log中只会记录最近这次的commit）

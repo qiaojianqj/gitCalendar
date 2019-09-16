@@ -62,3 +62,9 @@ man git
 ## 忽略部分文件
 
 编写.gitignore文件，并加入Git仓库
+
+## 常用命令
+
+1. git add，添加修改到暂存区，再git commit -m “comment” 提交到本地仓库
+2. git commit -a -m “comment” 可以跳过git add，直接提交修改到本地仓库。
+3. 文件重命名：git mv

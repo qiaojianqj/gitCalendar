@@ -89,6 +89,7 @@ man git
     查看所有标签：git tag
     新建轻量级标签 git tag v1.0
     新建含附注标签 git tag -a v1.0 -m “coment”
+    将标签信息push到远端仓库：git push origin --tags
     ~~~
 
     

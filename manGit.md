@@ -59,4 +59,6 @@ man git
 
    git clone git://url/test.git
 
-   
+## 忽略部分文件
+
+编写.gitignore文件，并加入Git仓库

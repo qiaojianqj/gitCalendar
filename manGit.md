@@ -93,5 +93,16 @@ man git
     将标签信息push到远端仓库：git push origin --tags
     ~~~
 
-    
+11. git 命令自动补全
 
+    ~~~
+    环境CentOS：
+    将git源码目录下文件contrib/completion/git-completion.bash 拷贝到本机 /etc/bash_completion.d/
+    编辑~/.bashrc，加入：
+    if [ -f /etc/bash_completion.d/git-completion.bash ]; then
+            . /etc/bash_completion.d/git-completion.bash
+    fi
+    重新source ~/.bashrc
+    ~~~
+
+    

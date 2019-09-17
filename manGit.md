@@ -67,7 +67,7 @@ man git
 
 1. git add，添加修改到暂存区，再git commit -m “comment” 提交到本地仓库
 
-2. git commit -a -m “comment” 可以跳过git add，直接提交修改到本地仓库。
+2. git commit -a -m “comment” 可以跳过git add，直接提交修改到本地仓库，新增的文件还是untracked状态仍然需要先git add。
 
 3. 文件重命名：git mv old new
 

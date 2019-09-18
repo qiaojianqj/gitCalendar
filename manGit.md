@@ -73,7 +73,7 @@ man git
 
 4. 查看提交历史：git log
 
-5. ##### 修改最近一次提交：git commit --amend（比如：先git commit，发现还有未提交文件，git add 忘提交文件，再次执行git commit --amend，会覆盖上次的commit，git log中只会记录最近这次的commit。注意修改已经push的commit会导致再次push冲突）
+5. ##### 修改最近一次提交：git commit --amend（比如：先git commit，发现还有未提交文件，git add 忘提交文件，再次执行git commit --amend，会覆盖上次的commit，git log中只会记录最近这次的commit。注意不能修改已经push的commit，会导致再次push冲突）
 
 6. 取消保存到暂存区的文件：git reset HEAD file，此操作会将git add的文件还原回修改待添加的状态
 
@@ -91,6 +91,8 @@ man git
     新建含附注标签 git tag -a v1.0 -m “coment”
     针对某个commit添加标签：git tag -a v1.2 ef35ae2 -m “comment”
     将标签信息push到远端仓库：git push origin --tags
+    切换到某个tag：git checkout v1.0
+    拉取某个tag：git pull origin :remotes/origin/v1.0
     ~~~
 
 11. git 命令自动补全
@@ -104,5 +106,14 @@ man git
     fi
     重新source ~/.bashrc
     ~~~
+
+12. git checkout commitNo / git checkout tagName，会导致HEAD执行具体的某次commit或某个tag，此时HEAD处于游离状态（detached），此时基于HEAD的修改会提交到一个新开的匿名分支，一旦切换到其他分支，此detached分支即不可见。解决办法：
+
+    > 1. git reflog 可以查看之前到所有提交记录
+    > 2. 找到之前基于HEAD detached分支的最新提交commitNo
+    > 3. git checkout commitNo，切换到之前基于HEAD detached分支的最新提交commitNo
+    > 4. 基于此commit新建一个分支：git checkout -b newDetached
+    > 5. 切换回正常分支如master：git checkout master
+    > 6. 执行分支合并即可找回之前基于HEAD detached分支的修改：git merge newDetached
 
     

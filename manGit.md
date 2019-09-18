@@ -120,7 +120,7 @@ man git
     > 5. 切换回正常分支如master：git checkout master
     > 6. 执行分支合并即可找回之前基于HEAD detached分支的修改：git merge newDetached
 
-12. 
+12.  issue123
 
 
 

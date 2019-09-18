@@ -113,10 +113,14 @@ man git
 
 11. git checkout commitNo / git checkout tagName，会导致HEAD执行具体的某次commit或某个tag，此时HEAD处于游离状态（detached），此时基于HEAD的修改会提交到一个新开的匿名分支，一旦切换到其他分支，此detached分支即不可见。解决办法：
 
-> 1. git reflog 可以查看之前到所有提交记录
-> 2. 找到之前基于HEAD detached分支的最新提交commitNo
-> 3. git checkout commitNo，切换到之前基于HEAD detached分支的最新提交commitNo
-> 4. 基于此commit新建一个分支：git checkout -b newDetached
-> 5. 切换回正常分支如master：git checkout master
-> 6. 执行分支合并即可找回之前基于HEAD detached分支的修改：git merge newDetached
+    > 1. git reflog 可以查看之前到所有提交记录
+    > 2. 找到之前基于HEAD detached分支的最新提交commitNo
+    > 3. git checkout commitNo，切换到之前基于HEAD detached分支的最新提交commitNo
+    > 4. 基于此commit新建一个分支：git checkout -b newDetached
+    > 5. 切换回正常分支如master：git checkout master
+    > 6. 执行分支合并即可找回之前基于HEAD detached分支的修改：git merge newDetached
+
+12. 
+
+
 

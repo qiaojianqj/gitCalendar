@@ -63,6 +63,22 @@ man git
 
 编写.gitignore文件，并加入Git仓库
 
+## git 命令自动补全
+
+环境CentOS：
+
+1. 将git源码目录下文件contrib/completion/git-completion.bash 拷贝到本机 /etc/bash_completion.d/
+
+2. 编辑~/.bashrc，加入：
+
+   ~~~
+   if [ -f /etc/bash_completion.d/git-completion.bash ]; then
+           . /etc/bash_completion.d/git-completion.bash
+   fi
+   ~~~
+
+3. 重新source ~/.bashrc
+
 ## 常用命令
 
 1. git add，添加修改到暂存区，再git commit -m “comment” 提交到本地仓库
@@ -95,25 +111,12 @@ man git
     拉取某个tag：git pull origin :remotes/origin/v1.0
     ~~~
 
-11. git 命令自动补全
+11. git checkout commitNo / git checkout tagName，会导致HEAD执行具体的某次commit或某个tag，此时HEAD处于游离状态（detached），此时基于HEAD的修改会提交到一个新开的匿名分支，一旦切换到其他分支，此detached分支即不可见。解决办法：
 
-    ~~~
-    环境CentOS：
-    将git源码目录下文件contrib/completion/git-completion.bash 拷贝到本机 /etc/bash_completion.d/
-    编辑~/.bashrc，加入：
-    if [ -f /etc/bash_completion.d/git-completion.bash ]; then
-            . /etc/bash_completion.d/git-completion.bash
-    fi
-    重新source ~/.bashrc
-    ~~~
+> 1. git reflog 可以查看之前到所有提交记录
+> 2. 找到之前基于HEAD detached分支的最新提交commitNo
+> 3. git checkout commitNo，切换到之前基于HEAD detached分支的最新提交commitNo
+> 4. 基于此commit新建一个分支：git checkout -b newDetached
+> 5. 切换回正常分支如master：git checkout master
+> 6. 执行分支合并即可找回之前基于HEAD detached分支的修改：git merge newDetached
 
-12. git checkout commitNo / git checkout tagName，会导致HEAD执行具体的某次commit或某个tag，此时HEAD处于游离状态（detached），此时基于HEAD的修改会提交到一个新开的匿名分支，一旦切换到其他分支，此detached分支即不可见。解决办法：
-
-    > 1. git reflog 可以查看之前到所有提交记录
-    > 2. 找到之前基于HEAD detached分支的最新提交commitNo
-    > 3. git checkout commitNo，切换到之前基于HEAD detached分支的最新提交commitNo
-    > 4. 基于此commit新建一个分支：git checkout -b newDetached
-    > 5. 切换回正常分支如master：git checkout master
-    > 6. 执行分支合并即可找回之前基于HEAD detached分支的修改：git merge newDetached
-
-    

@@ -158,7 +158,27 @@ man git
     >
     > 变基是清理分支提交历史，合并会保留分支的提交历史
     >
-    > 
+    > 4. 举例
+    >
+    > ~~~
+    > 0. 前提：当前master分支
+    > 1. 新建分支dev并作提交：
+    > git checkout -b dev
+    > git cm -a -m “comment”
+    > 2. 切回master分支并作提交
+    > git checkout master
+    > git cm -a -m “comment”
+    > 3. 此时两个分支分叉了，将dev分支的修改干净的合并到master分支：
+    > git checkout dev
+    > git rebase master
+    > git checkout master
+    > git merge dev 
+    > 4. 此时dev分支的所有提交历史都没有了，但是dev的所有修改都合并到了masger分支
+    > ~~~
+    
+    
+
+
 
 ​    
 

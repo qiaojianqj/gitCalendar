@@ -139,7 +139,9 @@ man git
     10. 查看本地仓库.git/config文件，有两个remote：origin、githubCalendar，每次推送的时候可以指定remote服务器选择推送到哪个远程服务器，默认推送到origin：
     git push (git push origin)
     git push githubCalendar
-    11. 删除远程分支githubCalendar：push的时候如果省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支]，也就删除了远程分支：git push githubCalendar :master
+    11. 删除远程分支githubCalendar-dev：push的时候如果省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支]，也就删除了远程分支：
+    11.1 新建远程分支dev：git push githubCalendar master:dev
+    11.2 删除远程分支dev：git push githubCalendar :dev
     ~~~
 
     

@@ -129,12 +129,16 @@ man git
     4. 在分支master下合并branchxx分支：git merge branchxx
     5. 删除分支：git branch -d branchxx
     6. 同步远程服务器上的数据到本地：git fetch origin
+    
     7. 添加多个远程服务器分支：git remote add githubCalendar git@github.com:qiaojianqj/gitCalendar.git
     8. 做新的修改并提交：git cm -a -m "remote add gitCalendar"
-    9. 推送本地master分支到远程gitCalendar服务器上对应master分支：git push githubCalendar master:master
+    9. 推送本地master分支到远程gitCalendar服务器上对应master分支，默认推送当前所在分支：
+    git push githubCalendar （git push githubCalendar master:master）
     10. 查看本地仓库.git/config文件，有两个remote：origin、githubCalendar，每次推送的时候可以指定remote服务器选择推送到哪个远程服务器，默认推送到origin：
     git push (git push origin)
     git push githubCalendar
+    
     ~~~
 
     
+

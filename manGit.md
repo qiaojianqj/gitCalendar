@@ -132,7 +132,9 @@ man git
     7. 添加多个远程服务器分支：git remote add githubCalendar git@github.com:qiaojianqj/gitCalendar.git
     8. 做新的修改并提交：git cm -a -m "remote add gitCalendar"
     9. 推送本地master分支到远程gitCalendar服务器上对应master分支：git push githubCalendar master:master
-    10. 查看本地仓库.git/config文件，有两个remote：origin、githubCalendar，每次推送的时候可以指定remote服务器选择推送到哪个远程服务器
+    10. 查看本地仓库.git/config文件，有两个remote：origin、githubCalendar，每次推送的时候可以指定remote服务器选择推送到哪个远程服务器，默认推送到origin：
+    git push (git push origin)
+    git push githubCalendar
     ~~~
 
     

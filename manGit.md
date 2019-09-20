@@ -176,7 +176,11 @@ man git
     > 4. 此时dev分支的所有提交历史都没有了，但是dev的所有修改都合并到了masger分支
     > ~~~
     
-    
+14. cherry-pick
+
+    > 在某个特性分支上进行开发，进行了多次提交，此时只想将特性分支上的某个提交合并进主分支，即可使用cherry-pick
+    >
+    > 在主分支上：git cherry-pick commitNo 
 
 
 

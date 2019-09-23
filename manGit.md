@@ -200,7 +200,10 @@ man git
   >
   > git stash branch stashBranchName (基于储藏工作时的所处的提交创建一个新分支)
   
-  
-  
-    
+17. 重写提交历史（基于本地提交，push到远端仓库的提交不宜再进行重写，容易引起混乱）
 
+   > 重写最近一次的提交历史：git commit --amend
+   >
+   > 交互式重写最近n次的提交历史：git rebase -i HEAD~n
+
+18. 

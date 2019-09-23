@@ -81,7 +81,7 @@ man git
 
 ## 常用命令
 
-1. git add，添加修改到暂存区，再git commit -m “comment” 提交到本地仓库
+1. git add，添加修改到暂存区，再git commit -m “comment” 提交到本地仓库。git add -i 进入交互式暂存模式。
 
 2. git commit -a -m “comment” 可以跳过git add，直接提交修改到本地仓库，新增的文件还是untracked状态仍然需要先git add。
 
@@ -182,7 +182,25 @@ man git
     >
     > 在主分支上：git cherry-pick commitNo 
 
+15. reflog
 
+    > reflow 引用日志：一份记录最近几个月你的 HEAD 和分支引用的日志
+    >
+    > git reflog
 
-​    
+16. stash
+
+  经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。解决这个问题的办法就是git stash命令
+  
+  > git stash
+  >
+  > git stash list
+  >
+  > git stash apply stash@{0}
+  >
+  > git stash branch stashBranchName (基于储藏工作时的所处的提交创建一个新分支)
+  
+  
+  
+    
 

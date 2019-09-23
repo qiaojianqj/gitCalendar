@@ -219,7 +219,5 @@ man git
    >                 git commit-tree "$@";
    >         fi' HEAD
    > ~~~
-   >
-   >  t
    
 18. 

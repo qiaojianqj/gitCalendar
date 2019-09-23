@@ -205,5 +205,21 @@ man git
    > 重写最近一次的提交历史：git commit --amend
    >
    > 交互式重写最近n次的提交历史：git rebase -i HEAD~n
-
+>
+   > 全局性更好提交者名称和电子邮件地址：
+>
+   > ~~~
+> git filter-branch --commit-filter '
+   >         if [ "$GIT_AUTHOR_EMAIL" = "gaga@GaGadeBook.lan" ];
+   >         then
+   >                 GIT_AUTHOR_NAME="localGa";
+   >                 GIT_AUTHOR_EMAIL="localGa@docker.com";
+   >                 git commit-tree "$@";
+   >         else
+   >                 git commit-tree "$@";
+   >         fi' HEAD
+   > ~~~
+   >
+   >  t
+   
 18. 

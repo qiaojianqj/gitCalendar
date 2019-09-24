@@ -204,9 +204,9 @@ man git
 
    > 重写最近一次的提交历史：git commit --amend
    >
-   > 交互式重写最近n次的提交历史：git rebase -i HEAD~n
+   > 交互式重写最近n次的提交历史（合并，删除，调整次序）：git rebase -i HEAD~n
    >
-   > 全局性更好提交者名称和电子邮件地址：
+   > 全局性更改提交者名称和电子邮件地址：（注意将修改push到仓库，会读取git config的配置，所以最好保持此处的name he email和git config的一致）
    >
    > ~~~
    > git filter-branch --commit-filter '

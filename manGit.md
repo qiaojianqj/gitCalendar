@@ -232,6 +232,6 @@ man git
 
    git submodule add  repourl （此时会创建一个相应的子目录 和 .gitmodules文件，git操作在子目录和外层目录是独立的。在外层项目中，把子目录当作一个特殊文件处理，每次子目录有新的提交变更时，外层目录会看到相应的子目录特殊文件有修改）
 
-   
+   当你克隆一个带子模块的项目时，你将得到包含子项目的目录，但里面是空的没有文件，此时还需要运行：git submodule init & git submodule update 来初始化配置并拉取子项目文件
 
    

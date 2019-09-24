@@ -219,4 +219,7 @@ man git
    >             git commit-tree "$@";
    >     fi' HEAD
    > ~~~
-18. 
+   
+18. 文件标注：查看文件的每一行对应的最后一次提交信息
+
+   git blame fileName

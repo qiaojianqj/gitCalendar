@@ -220,4 +220,3 @@ man git
    >     fi' HEAD
    > ~~~
 18. 
-

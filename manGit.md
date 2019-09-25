@@ -236,8 +236,19 @@ man git
 
    但是在带子模块的项目里切换分支需要额外多余的操作很麻烦
 
-20. 子树归并
+20. 子树归并：处理子项目的另一种方式
+
+   子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中
+
+   比如将learnGit项目添加进CalendarServer作为子项目：
+
+   1. git remote add learnGit git@github.com:qiaojianqj/learnGit.git （添加远程仓库）
+   2. git fetch learnGit （获取远程仓库配置分支信息）
+   3. git checkout -b learngit learnGit/master （以新添加的远程仓库master分支建立本地分支learngit）
+   4. git checkout master （切换回CalendarServer项目本地分支）
+   5. git read-tree --prefix=learngit/ -u learngit （拉取learngit分支到master分支的learngit目录，作为子项目）
 
    
 
    
+

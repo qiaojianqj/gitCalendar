@@ -97,19 +97,31 @@ man git
 
 8. 放弃对已经保存到暂存区的文件的修改：git reset --hard commitNo （commitNo指reset到哪个提交点，默认是HEAD所在提交点）
 
+  git reset 回滚：
+
+  > 三种模式：
+  >
+  > git reset [--soft | --mixed | --hard] commitNo
+  >
+  > --soft：回滚到指定commitNo，此commitNo之后的提交修改（git commit）回滚到暂存区状态（git add）
+  >
+  > --mixed：回滚到指定commitNo，此commitNo之后的提交修改（git commit）回滚到已修改状态（未执行git  add）
+  >
+  > --hard：回滚到指定commitNo，此commitNo之后的提交修改（git commit）直接丢弃
+
 9. git fetch：拉取远程仓库的分支信息和tag信息
 
 10. 打标签：分为：轻量级标签（只是个引用，指向某个提交点），含附注的标签（独立的一个标签对象）
 
-    ~~~
-    查看所有标签：git tag
-    新建轻量级标签 git tag v1.0
-    新建含附注标签 git tag -a v1.0 -m “coment”
-    针对某个commit添加标签：git tag -a v1.2 ef35ae2 -m “comment”
-    将标签信息push到远端仓库：git push origin --tags
-    切换到某个tag：git checkout v1.0
-    拉取某个tag：git pull origin :remotes/origin/v1.0
-    ~~~
+   ~~~
+   查看所有标签：git tag
+   新建轻量级标签 git tag v1.0
+   新建含附注标签 git tag -a v1.0 -m “coment”
+   针对某个commit添加标签：git tag -a v1.2 ef35ae2 -m “comment”
+   将标签信息push到远端仓库：git push origin --tags
+   切换到某个tag：git checkout v1.0
+   拉取某个tag：git pull origin :remotes/origin/v1.0
+   ~~~
 
 11. git checkout commitNo / git checkout tagName，会导致HEAD执行具体的某次commit或某个tag，此时HEAD处于游离状态（detached），此时基于HEAD的修改会提交到一个新开的匿名分支，一旦切换到其他分支，此detached分支即不可见。解决办法：
 
@@ -175,7 +187,7 @@ man git
     > git merge dev 
     > 4. 此时dev分支的所有提交历史都没有了，但是dev的所有修改都合并到了masger分支
     > ~~~
-    
+
 14. cherry-pick
 
     > 在某个特性分支上进行开发，进行了多次提交，此时只想将特性分支上的某个提交合并进主分支，即可使用cherry-pick
@@ -190,16 +202,16 @@ man git
 
 16. stash
 
-  经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。解决这个问题的办法就是git stash命令
-  
-  > git stash
-  >
-  > git stash list
-  >
-  > git stash apply stash@{0}
-  >
-  > git stash branch stashBranchName (基于储藏工作时的所处的提交创建一个新分支)
-  
+   经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。解决这个问题的办法就是git stash命令
+
+   > git stash
+   >
+   > git stash list
+   >
+   > git stash apply stash@{0}
+   >
+   > git stash branch stashBranchName (基于储藏工作时的所处的提交创建一个新分支)
+
 17. 重写提交历史（基于本地提交，push到远端仓库的提交不宜再进行重写，容易引起混乱）
 
    > 重写最近一次的提交历史：git commit --amend
@@ -219,34 +231,40 @@ man git
    >             git commit-tree "$@";
    >     fi' HEAD
    > ~~~
-   
+
 18. 文件标注：查看文件的每一行对应的最后一次提交信息
 
    git blame fileName
 
 19. 子模块：允许你将一个 Git 仓库当作另外一个Git仓库的子目录。这允许你克隆另外一个仓库到你的项目中并且保持你的提交在两个git仓库相对独立。
 
-   子模块应用场景：
+   > 子模块应用场景：
+   >
+   > 当你在一个项目上工作时，你需要在其中使用另外一个项目。也许它是一个第三方开发的库或者是你独立开发和并在多个父项目中使用的。这个场景下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。
+   >
+   > git submodule add  repourl （此时会创建一个相应的子目录 和 .gitmodules文件，git操作在子目录和外层目录是独立的。在外层项目中，把子目录当作一个特殊文件处理，每次子目录有新的提交变更时，外层目录会看到相应的子目录特殊文件有修改）
+   >
+   > 当你克隆一个带子模块的项目时，你将得到包含子项目的目录，但里面是空的没有文件，此时还需要运行：git submodule init & git submodule update 来初始化配置并拉取子项目文件
+   >
+   > 但是在带子模块的项目里切换分支需要额外多余的操作很麻烦
 
-   当你在一个项目上工作时，你需要在其中使用另外一个项目。也许它是一个第三方开发的库或者是你独立开发和并在多个父项目中使用的。这个场景下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。
+20. 子树归并：处理子项目的另一种方式：以分支合并的方式来添加子项目
 
-   git submodule add  repourl （此时会创建一个相应的子目录 和 .gitmodules文件，git操作在子目录和外层目录是独立的。在外层项目中，把子目录当作一个特殊文件处理，每次子目录有新的提交变更时，外层目录会看到相应的子目录特殊文件有修改）
+   > 子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中
+   >
+   > 比如将learnGit项目添加进CalendarServer作为子项目：
+   >
+   > 1. git remote add learnGit git@github.com:qiaojianqj/learnGit.git （添加远程仓库）
+   > 2. git fetch learnGit （获取远程仓库配置分支信息）
+   > 3. git checkout -b learngit learnGit/master （以新添加的远程仓库master分支建立本地分支learngit）
+   > 4. git checkout master （切换回CalendarServer项目本地分支）
+   > 5. git read-tree --prefix=learngit/ -u learngit （拉取learngit分支到master分支的learngit目录，作为子项目）
 
-   当你克隆一个带子模块的项目时，你将得到包含子项目的目录，但里面是空的没有文件，此时还需要运行：git submodule init & git submodule update 来初始化配置并拉取子项目文件
+21. 
 
-   但是在带子模块的项目里切换分支需要额外多余的操作很麻烦
+   
 
-20. 子树归并：处理子项目的另一种方式
-
-   子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中
-
-   比如将learnGit项目添加进CalendarServer作为子项目：
-
-   1. git remote add learnGit git@github.com:qiaojianqj/learnGit.git （添加远程仓库）
-   2. git fetch learnGit （获取远程仓库配置分支信息）
-   3. git checkout -b learngit learnGit/master （以新添加的远程仓库master分支建立本地分支learngit）
-   4. git checkout master （切换回CalendarServer项目本地分支）
-   5. git read-tree --prefix=learngit/ -u learngit （拉取learngit分支到master分支的learngit目录，作为子项目）
+   
 
    
 

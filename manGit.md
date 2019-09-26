@@ -250,23 +250,33 @@ man git
 
 20. 子树归并：处理子项目的另一种方式：以分支合并的方式来添加子项目
 
-   > 子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中
-   >
-   > 比如将learnGit项目添加进CalendarServer作为子项目：
-   >
-   > 1. git remote add learnGit git@github.com:qiaojianqj/learnGit.git （添加远程仓库）
-   > 2. git fetch learnGit （获取远程仓库配置分支信息）
-   > 3. git checkout -b learngit learnGit/master （以新添加的远程仓库master分支建立本地分支learngit）
-   > 4. git checkout master （切换回CalendarServer项目本地分支）
-   > 5. git read-tree --prefix=learngit/ -u learngit （拉取learngit分支到master分支的learngit目录，作为子项目）
+    > 子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中
+    >
+    > 比如将learnGit项目添加进CalendarServer作为子项目：
+    >
+    > 1. git remote add learnGit git@github.com:qiaojianqj/learnGit.git （添加远程仓库）
+    > 2. git fetch learnGit （获取远程仓库配置分支信息）
+    > 3. git checkout -b learngit learnGit/master （以新添加的远程仓库master分支建立本地分支learngit）
+    > 4. git checkout master （切换回CalendarServer项目本地分支）
+    > 5. git read-tree --prefix=learngit/ -u learngit （拉取learngit分支到master分支的learngit目录，作为子项目）
 
-21. 
+## git hook
 
-   
+在git项目的.git/hooks目录下存放有钩子脚本，在特点git命令执行前后会被调用，实现自定义逻辑
 
-   
+默认脚本以.sample结尾，不起作用，去掉.sample使得钩子命令生效
 
-   
+## git svn
 
-   
+git svn 命令集用于 git客户端和svn服务端交互，以及将svn仓库迁徙至git仓库
+
+
+
+ 
+
+ 
+
+ 
+
+ 
 

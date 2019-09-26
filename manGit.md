@@ -99,7 +99,7 @@ man git
 
   git reset 回滚：
 
-  > 三种模式：
+  > 三种模式：默认mixed模式
   >
   > git reset [--soft | --mixed | --hard] commitNo
   >

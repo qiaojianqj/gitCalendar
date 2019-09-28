@@ -270,7 +270,9 @@ man git
 
 git svn 命令集用于 git客户端和svn服务端交互，以及将svn仓库迁徙至git仓库
 
+## git 手册
 
+https://git-scm.com/book/zh/v1/
 
  
 
